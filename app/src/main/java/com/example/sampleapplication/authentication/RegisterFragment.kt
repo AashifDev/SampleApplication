@@ -1,5 +1,6 @@
 package com.example.sampleapplication.authentication
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.sampleapplication.mainUi.MainActivity
 import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -38,13 +41,23 @@ class RegisterFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
             if (validate()){
                 register()
+                binding.llPhone.visibility = View.VISIBLE
             }
         }
+
+        binding.imageViewBack.setOnClickListener { findNavController().navigate(R.id.loginFragment) }
     }
 
     private fun register() {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { register->
-
+            if (register.isSuccessful){
+                startActivity(Intent(context, MainActivity::class.java))
+                requireActivity().finish()
+                binding.progressCircular.visibility = View.GONE
+            }else{
+                binding.progressCircular.visibility = View.GONE
+                Toast.makeText(context, "Registration Failed", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -99,11 +112,14 @@ class RegisterFragment : Fragment() {
                     binding.etEmail.error = "Email address is blank"
                     binding.etEmail.requestFocus()
                     return false
-                }else if (password.isEmpty() && password == ""){
+                }else if (password.isEmpty() && password == "" ){
                     binding.etPass.error = "Password is blank"
                     binding.etPass.requestFocus()
                     return false
-                }else if ( conPassword != password){
+                }else if (password.length < 6){
+                    Toast.makeText(context, "Minimum 6 character required", Toast.LENGTH_SHORT).show()
+                    return false
+                }else if (conPassword != password){
                     binding.etConPass.error = "Password does not matched"
                     binding.etConPass.requestFocus()
                     return false

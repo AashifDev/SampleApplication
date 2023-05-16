@@ -10,4 +10,11 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="new_here">New Here!</string>
     <string name="register">Register</string>
+    <string name="register_your_self_for_continue">Register Your Self For Continue</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="tab_layout">Tab Layout</string>
+    <string name="firebase_db">Firebase DB</string>
+    <string name="google_map">Google Map</string>
+    <string name="logout">Logout</string>
+    <string name="dashboard">Dashboard</string>
 </resources>

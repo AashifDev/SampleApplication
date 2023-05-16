@@ -9,9 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.sampleapplication.MainActivity
+import com.example.sampleapplication.mainUi.MainActivity
 import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentLoginBinding
+import com.example.sampleapplication.session.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
@@ -21,6 +22,7 @@ class LoginFragment : Fragment() {
     var password = ""
     var isMobileFieldEnabled:Boolean = false
     lateinit var auth: FirebaseAuth
+    lateinit var prefManager: PrefManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +32,7 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
         binding.llPhone.visibility = View.GONE
         auth = FirebaseAuth.getInstance()
+        prefManager = PrefManager(requireContext())
         return binding.root
     }
 
@@ -44,9 +47,10 @@ class LoginFragment : Fragment() {
             if (validate()){
                 login()
                 binding.progressCircular.visibility = View.VISIBLE
+                /*startActivity(Intent(context,MainActivity::class.java))
+                requireActivity().finish()*/
             }
         }
-
     }
 
     private fun selectEmailAndPhone() {
@@ -73,11 +77,12 @@ class LoginFragment : Fragment() {
     private fun login() {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { signIn->
             if (signIn.isSuccessful){
-                startActivity(Intent(context,MainActivity::class.java))
+                prefManager.saveUser(email)
+                startActivity(Intent(context, MainActivity::class.java))
                 requireActivity().finish()
                 binding.progressCircular.visibility = View.GONE
             }else{
-                Toast.makeText(context, "Sign in Failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Invalid Credentials!!", Toast.LENGTH_SHORT).show()
                 binding.progressCircular.visibility = View.GONE
             }
         }

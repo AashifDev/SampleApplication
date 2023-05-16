@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/my_nav">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/dashboard">
 
+    <fragment
+        android:id="@+id/tabLayoutFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.TabLayoutFragment"
+        android:label="fragment_tab_layout"
+        tools:layout="@layout/fragment_tab_layout" >
+        <action
+            android:id="@+id/action_tabLayoutFragment_to_pageOneFragment"
+            app:destination="@id/pageOneFragment" />
+        <action
+            android:id="@+id/action_tabLayoutFragment_to_pageTwoFragment"
+            app:destination="@id/pageTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/firebaseDbFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.FirebaseDbFragment"
+        android:label="fragment_firebase_db"
+        tools:layout="@layout/fragment_firebase_db" />
+    <fragment
+        android:id="@+id/googleMapFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.GoogleMapFragment"
+        android:label="fragment_google_map"
+        tools:layout="@layout/fragment_google_map" />
+    <fragment
+        android:id="@+id/dashboard"
+        android:name="com.example.sampleapplication.mainUi.fragment.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/pageOneFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.PageOneFragment"
+        android:label="fragment_page_one"
+        tools:layout="@layout/fragment_page_one" />
+    <fragment
+        android:id="@+id/pageTwoFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.PageTwoFragment"
+        android:label="fragment_page_two"
+        tools:layout="@layout/fragment_page_two" />
+    <fragment
+        android:id="@+id/retrofitFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.RetrofitFragment"
+        android:label="fragment_retrofit"
+        tools:layout="@layout/fragment_retrofit" />
 </navigation>

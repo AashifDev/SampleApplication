@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainUi.fragment.HomeFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/tabLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        android:layout_margin="6dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tab"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tab Layout Demo" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/firebaseDb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/firebase"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Firebase Db Demo"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/googleMap"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/g_map"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Google Map Demo"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/retrofit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="6dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/vertical"
+        app:layout_constraintTop_toTopOf="@+id/horizontal">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:src="@drawable/retrofit"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Api Integration with Retrofit"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
