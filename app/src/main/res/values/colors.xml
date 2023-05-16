@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    //App Color
+    <color name="blue">#2A7EDC</color>
+    <color name="green">#02BD90</color>
+    <color name="red">#E41213</color>
+    <color name="alpha_red">#8DE41213</color>
+    <color name="alpha_blue">#7C2A7EDC</color>
+    <color name="alpha_black">#46000000</color>
+</resources>
