@@ -7,9 +7,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="5dp"
-        android:layout_margin="5dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,14 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:src="@drawable/ic_ham_burger" />
+            android:layout_marginStart="6dp"
+            android:src="@drawable/hamburgar" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/lang"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:padding="10dp"
-            android:layout_gravity="end"
+            android:layout_marginEnd="6dp"
+            android:layout_gravity="center|end"
             android:src="@drawable/lang" />
 
     </androidx.cardview.widget.CardView>

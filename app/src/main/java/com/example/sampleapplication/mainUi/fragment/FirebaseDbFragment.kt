@@ -1,11 +1,11 @@
 package com.example.sampleapplication.mainUi.fragment
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sampleapplication.R
@@ -16,13 +16,14 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 
 
 class FirebaseDbFragment : Fragment() {
     lateinit var binding: FragmentFirebaseDbBinding
     lateinit var adapter: RecyclerViewAdapter
-    lateinit var list: ArrayList<Note>
+    lateinit var arrList: ArrayList<Note>
     lateinit var db: FirebaseFirestore
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,17 +31,19 @@ class FirebaseDbFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentFirebaseDbBinding.inflate(layoutInflater, container, false)
+        binding.progressBar.visibility = View.VISIBLE
+        binding.noDataFound.visibility = View.GONE
         db = FirebaseFirestore.getInstance()
-        list = arrayListOf()
-        adapter = RecyclerViewAdapter(list)
+        arrList = arrayListOf()
+        adapter = RecyclerViewAdapter(arrList,this)
         setAdapter()
         binding.recyclerView.adapter = adapter
         return binding.root
     }
 
     private fun setAdapter() {
-        db.collection("notes")
-            .addSnapshotListener(object :EventListener<QuerySnapshot>{
+        db.collection("notes").orderBy("title",Query.Direction.ASCENDING)
+            /*.addSnapshotListener(object : EventListener<QuerySnapshot> {
                 override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
                     if (error != null){
                         Log.e("tag", error.message.toString())
@@ -48,18 +51,32 @@ class FirebaseDbFragment : Fragment() {
                     }
                     for (dc: DocumentChange in value?.documentChanges!!){
                         if (dc.type == DocumentChange.Type.ADDED){
-                            list.add(dc.document.toObject(Note::class.java))
+                            arrList.add(dc.document.toObject(Note::class.java))
                         }
                     }
                     adapter.notifyDataSetChanged()
                 }
-            })
+            })*/
+            .get()
+            .addOnSuccessListener{
+                binding.progressBar.visibility = View.GONE
+                if (!it.isEmpty){
+                    for (d:DocumentChange in it.documentChanges){
+                        arrList.add(d.document.toObject(Note::class.java))
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+                else{
+                    Toast.makeText(context, "No Data Found", Toast.LENGTH_SHORT).show()
+                    binding.noDataFound.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.fabAddNote.setOnClickListener {
            findNavController().navigate(R.id.action_firebaseDbFragment_to_addUpdateFragment)
         }
-
     }
 }

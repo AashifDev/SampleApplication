@@ -1,18 +1,10 @@
 package com.example.sampleapplication.model
 
-import android.widget.EditText
-import com.google.firebase.database.Exclude
+import com.google.firebase.firestore.DocumentId
 
 data class Note(
+    @DocumentId
+    val id: String? = null,
     val title: String? = null,
     val description: String? = null
-)/*{
-    @Exclude
-    fun toMap(): Map<String, Any?> {
-        return mapOf(
-            "id" to id,
-            "title" to title,
-            "description" to description
-        )
-    }
-}*/
+)
