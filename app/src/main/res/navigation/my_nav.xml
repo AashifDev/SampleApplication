@@ -21,7 +21,11 @@
         android:id="@+id/firebaseDbFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.FirebaseDbFragment"
         android:label="fragment_firebase_db"
-        tools:layout="@layout/fragment_firebase_db" />
+        tools:layout="@layout/fragment_firebase_db" >
+        <action
+            android:id="@+id/action_firebaseDbFragment_to_addUpdateFragment"
+            app:destination="@id/addUpdateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/googleMapFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.GoogleMapFragment"
@@ -31,20 +35,50 @@
         android:id="@+id/dashboard"
         android:name="com.example.sampleapplication.mainUi.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_dashboard_to_retrofitFragment"
+            app:destination="@id/retrofitFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_googleMapFragment"
+            app:destination="@id/googleMapFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_tabLayoutFragment"
+            app:destination="@id/tabLayoutFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_firebaseDbFragment"
+            app:destination="@id/firebaseDbFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pageOneFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.PageOneFragment"
         android:label="fragment_page_one"
-        tools:layout="@layout/fragment_page_one" />
+        tools:layout="@layout/fragment_page_one" >
+        <action
+            android:id="@+id/action_pageOneFragment_to_tabLayoutFragment"
+            app:destination="@id/tabLayoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pageTwoFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.PageTwoFragment"
         android:label="fragment_page_two"
-        tools:layout="@layout/fragment_page_two" />
+        tools:layout="@layout/fragment_page_two" >
+        <action
+            android:id="@+id/action_pageTwoFragment_to_tabLayoutFragment"
+            app:destination="@id/tabLayoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/retrofitFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.RetrofitFragment"
         android:label="fragment_retrofit"
         tools:layout="@layout/fragment_retrofit" />
+    <fragment
+        android:id="@+id/addUpdateFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.AddUpdateFragment"
+        android:label="fragment_add_update"
+        tools:layout="@layout/fragment_add_update" >
+        <action
+            android:id="@+id/action_addUpdateFragment_to_firebaseDbFragment"
+            app:destination="@id/firebaseDbFragment" />
+    </fragment>
 </navigation>
