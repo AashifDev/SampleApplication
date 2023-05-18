@@ -17,4 +17,9 @@
     <string name="google_map">Google Map</string>
     <string name="logout">Logout</string>
     <string name="dashboard">Dashboard</string>
+
+    //Navigation Drawer
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="delete">Delete</string>
 </resources>

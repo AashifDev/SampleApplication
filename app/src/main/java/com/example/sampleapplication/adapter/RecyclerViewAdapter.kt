@@ -11,9 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sampleapplication.R
 import com.example.sampleapplication.mainUi.fragment.FirebaseDbFragment
 import com.example.sampleapplication.model.Note
-import com.google.firebase.firestore.FirebaseFirestore
 
-class RecyclerViewAdapter(val list: ArrayList<Note>, val listener:FirebaseDbFragment): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdapter(val list: ArrayList<Note>,val listener: FirebaseDbFragment): RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.title)
         val description: TextView = view.findViewById(R.id.description)
@@ -35,8 +34,10 @@ class RecyclerViewAdapter(val list: ArrayList<Note>, val listener:FirebaseDbFrag
         holder.constraintLayout.setOnClickListener {
             val bundle = Bundle().apply {
                 putString("id",item.id)
+                putString("title",item.title)
+                putString("description",item.description)
             }
-            holder.itemView.findNavController().navigate(R.id.action_firebaseDbFragment_to_addUpdateFragment,bundle)
+            holder.itemView.findNavController().navigate(R.id.action_firebaseDbFragment_to_updateFragment,bundle)
         }
 
 

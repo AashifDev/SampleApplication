@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/tabLayoutFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.TabLayoutFragment"
-        android:label="fragment_tab_layout"
+        android:label="Tab Layout"
         tools:layout="@layout/fragment_tab_layout" >
         <action
             android:id="@+id/action_tabLayoutFragment_to_pageOneFragment"
@@ -20,21 +20,24 @@
     <fragment
         android:id="@+id/firebaseDbFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.FirebaseDbFragment"
-        android:label="fragment_firebase_db"
+        android:label="Firebase"
         tools:layout="@layout/fragment_firebase_db" >
         <action
-            android:id="@+id/action_firebaseDbFragment_to_addUpdateFragment"
-            app:destination="@id/addUpdateFragment" />
+            android:id="@+id/action_firebaseDbFragment_to_updateFragment"
+            app:destination="@id/updateFragment" />
+        <action
+            android:id="@+id/action_firebaseDbFragment_to_addFragment"
+            app:destination="@id/addFragment" />
     </fragment>
     <fragment
         android:id="@+id/googleMapFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.GoogleMapFragment"
-        android:label="fragment_google_map"
+        android:label="Google Map"
         tools:layout="@layout/fragment_google_map" />
     <fragment
         android:id="@+id/dashboard"
         android:name="com.example.sampleapplication.mainUi.fragment.HomeFragment"
-        android:label="fragment_home"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_dashboard_to_retrofitFragment"
@@ -70,15 +73,24 @@
     <fragment
         android:id="@+id/retrofitFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.RetrofitFragment"
-        android:label="fragment_retrofit"
+        android:label="Retrofit"
         tools:layout="@layout/fragment_retrofit" />
     <fragment
-        android:id="@+id/addUpdateFragment"
-        android:name="com.example.sampleapplication.mainUi.fragment.AddUpdateFragment"
-        android:label="fragment_add_update"
-        tools:layout="@layout/fragment_add_update" >
+        android:id="@+id/addFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.AddFragment"
+        android:label="Add Note"
+        tools:layout="@layout/fragment_add" >
         <action
             android:id="@+id/action_addUpdateFragment_to_firebaseDbFragment"
+            app:destination="@id/firebaseDbFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateFragment"
+        android:name="com.example.sampleapplication.mainUi.fragment.UpdateFragment"
+        android:label="Update Note"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_updateFragment_to_firebaseDbFragment"
             app:destination="@id/firebaseDbFragment" />
     </fragment>
 </navigation>

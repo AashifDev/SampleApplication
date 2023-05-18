@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,11 +14,7 @@ import com.example.sampleapplication.adapter.RecyclerViewAdapter
 import com.example.sampleapplication.databinding.FragmentFirebaseDbBinding
 import com.example.sampleapplication.model.Note
 import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.Query
-import com.google.firebase.firestore.QuerySnapshot
 
 
 class FirebaseDbFragment : Fragment() {
@@ -25,6 +22,7 @@ class FirebaseDbFragment : Fragment() {
     lateinit var adapter: RecyclerViewAdapter
     lateinit var arrList: ArrayList<Note>
     lateinit var db: FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,41 +40,32 @@ class FirebaseDbFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        db.collection("notes").orderBy("title",Query.Direction.ASCENDING)
-            /*.addSnapshotListener(object : EventListener<QuerySnapshot> {
-                override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                    if (error != null){
-                        Log.e("tag", error.message.toString())
-                        return
-                    }
-                    for (dc: DocumentChange in value?.documentChanges!!){
-                        if (dc.type == DocumentChange.Type.ADDED){
-                            arrList.add(dc.document.toObject(Note::class.java))
-                        }
-                    }
-                    adapter.notifyDataSetChanged()
-                }
-            })*/
+        db.collection("note")
             .get()
-            .addOnSuccessListener{
+            .addOnSuccessListener {
                 binding.progressBar.visibility = View.GONE
                 if (!it.isEmpty){
                     for (d:DocumentChange in it.documentChanges){
                         arrList.add(d.document.toObject(Note::class.java))
                     }
                     adapter.notifyDataSetChanged()
-                }
-                else{
-                    Toast.makeText(context, "No Data Found", Toast.LENGTH_SHORT).show()
+                }else{
                     binding.noDataFound.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
+
                 }
+            }
+            .addOnFailureListener {
+                binding.noDataFound.visibility = View.VISIBLE
+                Toast.makeText(context, "Unable to load data", Toast.LENGTH_SHORT).show()
             }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.fabAddNote.setOnClickListener {
-           findNavController().navigate(R.id.action_firebaseDbFragment_to_addUpdateFragment)
+           findNavController().navigate(R.id.action_firebaseDbFragment_to_addFragment)
         }
     }
+
+
 }

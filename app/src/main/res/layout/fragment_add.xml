@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".mainUi.fragment.AddUpdateFragment">
+    tools:context=".mainUi.fragment.AddFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/title"

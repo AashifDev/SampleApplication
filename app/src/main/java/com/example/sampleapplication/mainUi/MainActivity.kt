@@ -2,8 +2,10 @@ package com.example.sampleapplication.mainUi
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -12,7 +14,10 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.sampleapplication.R
 import com.example.sampleapplication.authentication.AuthenticationActivity
@@ -31,26 +36,25 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     lateinit var auth: FirebaseAuth
     lateinit var prefManager: PrefManager
-    lateinit var navigationView: NavigationView
-    lateinit var drawerLayout: DrawerLayout
+    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        drawerLayout = findViewById(R.id.drawerLayout)
-        navigationView = findViewById(R.id.navigationView)
-        navController = findNavController(R.id.mainFragment)
-        navigationView.setupWithNavController(navController)
-        NavigationUI.setupWithNavController(navigationView,navController)
+        setSupportActionBar(binding.appbar.appbar)
 
         auth = FirebaseAuth.getInstance()
         prefManager = PrefManager(this)
 
-        binding.appbar.toolbar.hamburger.setOnClickListener {
-            binding.drawerLayout.openDrawer(GravityCompat.START)
-        }
+        navController = findNavController(R.id.mainFragment)
+        appBarConfiguration = AppBarConfiguration(navController.graph,binding.drawerLayout)
+
+        binding.navigationView.setupWithNavController(navController)
+        setupActionBarWithNavController(navController,appBarConfiguration)
+
 
         transparentStatusBar()
         binding.navigationView.setNavigationItemSelectedListener {
@@ -74,6 +78,11 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
+    }
+
+   override fun onSupportNavigateUp(): Boolean {
+       val navController = findNavController(R.id.mainFragment)
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
     private fun logoutFromApplication() {
