@@ -16,6 +16,7 @@ class RecyclerViewAdapter(val list: ArrayList<Note>,val listener: FirebaseDbFrag
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         val title: TextView = view.findViewById(R.id.title)
         val description: TextView = view.findViewById(R.id.description)
+        val dateTime: TextView = view.findViewById(R.id.dateTime)
         val constraintLayout: ConstraintLayout = view.findViewById(R.id.constraintLayout)
     }
 
@@ -30,6 +31,7 @@ class RecyclerViewAdapter(val list: ArrayList<Note>,val listener: FirebaseDbFrag
         val item = list[position]
         holder.title.text = item.title
         holder.description.text = item.description
+        holder.dateTime.text = item.dateTime
 
         holder.constraintLayout.setOnClickListener {
             val bundle = Bundle().apply {

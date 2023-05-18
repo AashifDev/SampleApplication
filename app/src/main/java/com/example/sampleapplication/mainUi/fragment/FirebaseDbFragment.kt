@@ -15,6 +15,7 @@ import com.example.sampleapplication.databinding.FragmentFirebaseDbBinding
 import com.example.sampleapplication.model.Note
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 
 class FirebaseDbFragment : Fragment() {
@@ -41,6 +42,7 @@ class FirebaseDbFragment : Fragment() {
 
     private fun setAdapter() {
         db.collection("note")
+            .orderBy("title",Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener {
                 binding.progressBar.visibility = View.GONE
@@ -54,11 +56,13 @@ class FirebaseDbFragment : Fragment() {
                     Toast.makeText(context, "No Data", Toast.LENGTH_SHORT).show()
 
                 }
+                adapter.notifyDataSetChanged()
             }
             .addOnFailureListener {
                 binding.noDataFound.visibility = View.VISIBLE
                 Toast.makeText(context, "Unable to load data", Toast.LENGTH_SHORT).show()
             }
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
