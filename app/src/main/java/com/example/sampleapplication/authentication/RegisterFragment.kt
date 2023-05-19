@@ -45,6 +45,8 @@ class RegisterFragment : Fragment() {
             }
         }
 
+        binding.btnBackToLogin.setOnClickListener { findNavController().navigate(R.id.loginFragment) }
+
         binding.imageViewBack.setOnClickListener { findNavController().navigate(R.id.loginFragment) }
     }
 

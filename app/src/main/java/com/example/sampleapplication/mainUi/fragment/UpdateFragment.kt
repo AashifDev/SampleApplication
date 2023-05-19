@@ -13,6 +13,8 @@ import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentUpdateBinding
 import com.example.sampleapplication.model.Note
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Calendar
 
 class UpdateFragment : Fragment() {
 
@@ -68,8 +70,13 @@ class UpdateFragment : Fragment() {
     }
 
     private fun updateToDb() {
+
+        val date = Calendar.getInstance().time
+        val formatter = SimpleDateFormat.getDateTimeInstance()
+        val currentDate = formatter.format(date)
+
         if (validDate()){
-            val note = Note(currentId,title,description)
+            val note = Note(currentId,title,description,currentDate)
             db.collection("note")
                 .document(currentId)
                 .set(note)

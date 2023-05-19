@@ -14,6 +14,10 @@ import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentAddBinding
 import com.example.sampleapplication.model.Note
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.type.DateTime
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.Calendar
 
 class AddFragment : Fragment() {
 
@@ -39,9 +43,14 @@ class AddFragment : Fragment() {
 
     private fun addToDb() {
         val id = db.collection("note").document().id
+
+        val date = Calendar.getInstance().time
+        val formatter = SimpleDateFormat.getDateTimeInstance()
+        val currentDate = formatter.format(date)
+
         if (validDate()){
             binding.progressBar.visibility = View.VISIBLE
-            val note = Note(id, title, description)
+            val note = Note(id, title, description,currentDate)
             db.collection("note")
                 .document(id)
                 .set(note)
