@@ -11,9 +11,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include
+        <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/appbar"
-            layout="@layout/appbar_layout"/>
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <fragment
             android:id="@+id/mainFragment"

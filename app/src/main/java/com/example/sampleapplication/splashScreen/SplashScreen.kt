@@ -2,6 +2,7 @@ package com.example.sampleapplication.splashScreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,7 @@ import com.example.sampleapplication.authentication.AuthenticationActivity
 import com.example.sampleapplication.session.PrefManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
+import java.util.Locale
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
@@ -40,6 +42,26 @@ class SplashScreen : AppCompatActivity() {
                 startActivity(Intent(this, AuthenticationActivity::class.java))
                 this.finish()
             },3000)
+        }
+
+        loadLocate()
+    }
+
+    private fun setLocate(lang: String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.locale = locale
+        config.setLayoutDirection(locale)
+        this.resources.updateConfiguration(config,this.resources?.displayMetrics)
+        prefManager.setLang(lang)
+    }
+
+    private fun loadLocate(){
+        val language = prefManager.getLang()
+        if (language != null) {
+            setLocate(language)
         }
     }
 }

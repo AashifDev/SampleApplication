@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sample Application</string>
+    <string name="email">ईमेल</string>
+    <string name="mobile">मोबाइल</string>
+    <string name="email_address">ईमेल पता</string>
+    <string name="mobile_number">मोबाइल नंबर</string>
+    <string name="password">पासवर्ड</string>
+    <string name="forgot_password">पासवर्ड भूल गए</string>
+    <string name="new_here">क्या आप यहां नए आये हैं</string>
+    <string name="register">पंजीकरण </string>
+    <string name="register_your_self_for_continue">जारी रखने के लिए अपना पंजीकरण करें</string>
+    <string name="confirm_password">पासवर्ड की पुष्टि कीजिये</string>
+    <string name="tab_layout">टैब लेआउट</string>
+    <string name="firebase_db">फायरबेस डीबी</string>
+    <string name="google_map">गूगल नक़्शे</string>
+    <string name="logout">लॉग आउट</string>
+    <string name="dashboard">डैशबोर्ड</string>
+    <string name="login">लॉग इन करें</string>
+    <string name="sign_in_with">के साथ साइन इन करें</string>
+    <string name="english">English</string>
+    <string name="hindi">हिंदी</string>
+    <string name="retrofit">रेट्रोफिट</string>
+    <string name="update_note">अपडेट नोट</string>
+
+
+    <string name="tab_layout_demo">टैब लेआउट डेमो</string>
+    <string name="firebase_db_demo">फायरबेस डीबी डेमो</string>
+    <string name="google_map_demo">गूगल मानचित्र डेमो</string>
+    <string name="api_integration_with_retrofit">रेट्रोफिट के साथ एपीआई एकीकरण</string>
+</resources>

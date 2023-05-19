@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/tabLayoutFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.TabLayoutFragment"
-        android:label="Tab Layout"
+        android:label="@string/tab_layout"
         tools:layout="@layout/fragment_tab_layout" >
         <action
             android:id="@+id/action_tabLayoutFragment_to_pageOneFragment"
@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/firebaseDbFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.FirebaseDbFragment"
-        android:label="Firebase"
+        android:label="@string/firebase_db"
         tools:layout="@layout/fragment_firebase_db" >
         <action
             android:id="@+id/action_firebaseDbFragment_to_updateFragment"
@@ -30,27 +30,22 @@
             app:destination="@id/addFragment" />
     </fragment>
     <fragment
-        android:id="@+id/googleMapFragment"
-        android:name="com.example.sampleapplication.mainUi.fragment.GoogleMapFragment"
-        android:label="Google Map"
-        tools:layout="@layout/fragment_google_map" />
-    <fragment
         android:id="@+id/dashboard"
         android:name="com.example.sampleapplication.mainUi.fragment.HomeFragment"
-        android:label="Dashboard"
+        android:label="@string/dashboard"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_dashboard_to_retrofitFragment"
             app:destination="@id/retrofitFragment" />
-        <action
-            android:id="@+id/action_dashboard_to_googleMapFragment"
-            app:destination="@id/googleMapFragment" />
         <action
             android:id="@+id/action_dashboard_to_tabLayoutFragment"
             app:destination="@id/tabLayoutFragment" />
         <action
             android:id="@+id/action_dashboard_to_firebaseDbFragment"
             app:destination="@id/firebaseDbFragment" />
+        <action
+            android:id="@+id/action_dashboard_to_mapsActivity"
+            app:destination="@id/mapsActivity" />
     </fragment>
     <fragment
         android:id="@+id/pageOneFragment"
@@ -73,7 +68,7 @@
     <fragment
         android:id="@+id/retrofitFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.RetrofitFragment"
-        android:label="Retrofit"
+        android:label="@string/retrofit"
         tools:layout="@layout/fragment_retrofit" />
     <fragment
         android:id="@+id/addFragment"
@@ -87,10 +82,15 @@
     <fragment
         android:id="@+id/updateFragment"
         android:name="com.example.sampleapplication.mainUi.fragment.UpdateFragment"
-        android:label="Update Note"
+        android:label="@string/update_note"
         tools:layout="@layout/fragment_update" >
         <action
             android:id="@+id/action_updateFragment_to_firebaseDbFragment"
             app:destination="@id/firebaseDbFragment" />
     </fragment>
+    <activity
+        android:id="@+id/mapsActivity"
+        android:name="com.example.sampleapplication.mainUi.fragment.MapsActivity"
+        android:label="@string/google_map_demo"
+        tools:layout="@layout/activity_maps" />
 </navigation>

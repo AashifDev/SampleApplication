@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.sampleapplication.MyFirebaseMessagingService
 import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentAddBinding
 import com.example.sampleapplication.model.Note

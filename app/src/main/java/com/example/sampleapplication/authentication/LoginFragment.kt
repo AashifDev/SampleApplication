@@ -1,6 +1,8 @@
 package com.example.sampleapplication.authentication
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.text.TextUtils
 import androidx.fragment.app.Fragment
@@ -8,12 +10,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.recreate
 import androidx.navigation.fragment.findNavController
 import com.example.sampleapplication.mainUi.MainActivity
 import com.example.sampleapplication.R
 import com.example.sampleapplication.databinding.FragmentLoginBinding
 import com.example.sampleapplication.session.PrefManager
 import com.google.firebase.auth.FirebaseAuth
+import java.util.Locale
 
 class LoginFragment : Fragment() {
     lateinit var binding: FragmentLoginBinding
@@ -50,6 +54,36 @@ class LoginFragment : Fragment() {
                 /*startActivity(Intent(context,MainActivity::class.java))
                 requireActivity().finish()*/
             }
+        }
+
+        binding.eng.setOnClickListener {
+            loadLocate()
+            setLocate("eng")
+            recreate(requireActivity())
+        }
+
+        binding.hi.setOnClickListener {
+            loadLocate()
+            setLocate("hi")
+            recreate(requireActivity())
+        }
+    }
+
+    private fun setLocate(lang: String) {
+        val locale = Locale(lang)
+        Locale.setDefault(locale)
+
+        val config = Configuration()
+        config.locale = locale
+        config.setLayoutDirection(locale)
+        this.resources.updateConfiguration(config,context?.resources?.displayMetrics)
+        prefManager.setLang(lang)
+    }
+
+    private fun loadLocate(){
+        val language = prefManager.getLang()
+        if (language != null) {
+            setLocate(language)
         }
     }
 

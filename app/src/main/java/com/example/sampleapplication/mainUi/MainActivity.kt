@@ -1,6 +1,8 @@
 package com.example.sampleapplication.mainUi
 
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -28,6 +30,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuth.AuthStateListener
 import com.google.firebase.auth.FirebaseAuthProvider
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController: NavController
     lateinit var auth: FirebaseAuth
     lateinit var prefManager: PrefManager
-    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.appbar.appbar)
+        setSupportActionBar(binding.appbar)
 
         auth = FirebaseAuth.getInstance()
         prefManager = PrefManager(this)
@@ -54,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.navigationView.setupWithNavController(navController)
         setupActionBarWithNavController(navController,appBarConfiguration)
-
 
         transparentStatusBar()
         binding.navigationView.setNavigationItemSelectedListener {
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.firebaseDbFragment)
                 }
                 R.id.gMap -> {
-                    navController.navigate(R.id.googleMapFragment)
+                    navController.navigate(R.id.mapsActivity)
                 }
                 R.id.logout -> {
                     logoutFromApplication()
@@ -78,9 +79,10 @@ class MainActivity : AppCompatActivity() {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
+
     }
 
-   override fun onSupportNavigateUp(): Boolean {
+    override fun onSupportNavigateUp(): Boolean {
        val navController = findNavController(R.id.mainFragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }

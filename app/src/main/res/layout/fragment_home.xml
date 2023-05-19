@@ -31,7 +31,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tab Layout Demo" />
+                android:text="@string/tab_layout_demo" />
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Firebase Db Demo"/>
+                android:text="@string/firebase_db_demo"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Google Map Demo"/>
+                android:text="@string/google_map_demo"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -129,7 +129,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Api Integration with Retrofit"/>
+                android:text="@string/api_integration_with_retrofit"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 
 

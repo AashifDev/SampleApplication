@@ -17,6 +17,15 @@ class PrefManager(var context: Context) {
         return pref?.getString("email","")
     }
 
+    fun setLang(lang: String?){
+        edit?.putString("lang", lang)
+        edit?.commit()
+    }
+
+    fun getLang():String?{
+        return pref?.getString("lang","")
+    }
+
     fun clear(){
         edit?.clear()
         edit?.commit()

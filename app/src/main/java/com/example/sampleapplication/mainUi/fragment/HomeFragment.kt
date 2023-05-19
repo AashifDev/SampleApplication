@@ -1,5 +1,6 @@
 package com.example.sampleapplication.mainUi.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +31,9 @@ class HomeFragment : Fragment() {
 
         binding.tabLayout.setOnClickListener { findNavController().navigate(R.id.tabLayoutFragment) }
         binding.firebaseDb.setOnClickListener { findNavController().navigate(R.id.firebaseDbFragment) }
-        binding.googleMap.setOnClickListener { findNavController().navigate(R.id.googleMapFragment)}
+        binding.googleMap.setOnClickListener {
+            startActivity(Intent(requireContext(), MapsActivity::class.java))
+        }
         binding.retrofit.setOnClickListener { findNavController().navigate(R.id.retrofitFragment) }
     }
 

@@ -5,25 +5,6 @@
     android:layout_height="wrap_content"
     >
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="#402A7EDC"
-        app:layout_constraintStart_toStartOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/lang"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center|end"
-            android:layout_marginEnd="6dp"
-            android:padding="10dp"
-            android:src="@drawable/lang" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
