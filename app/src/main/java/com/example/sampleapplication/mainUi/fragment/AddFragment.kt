@@ -38,6 +38,7 @@ class AddFragment : Fragment() {
             addToDb()
         }
 
+        binding.fabSave.isClickable = true
         return binding.root
     }
 
@@ -49,6 +50,7 @@ class AddFragment : Fragment() {
         val currentDate = formatter.format(date)
 
         if (validDate()){
+            binding.fabSave.isClickable = false
             binding.progressBar.visibility = View.VISIBLE
             val note = Note(id, title, description,currentDate)
             db.collection("note")

@@ -47,6 +47,7 @@ class UpdateFragment : Fragment() {
         binding.fabDelete.setOnClickListener {
             if (currentId != ""){
                 deleteFromDb()
+                binding.fabDelete.isClickable = false
                 binding.progressBar.visibility = View.VISIBLE
             }
         }
@@ -76,6 +77,7 @@ class UpdateFragment : Fragment() {
         val currentDate = formatter.format(date)
 
         if (validDate()){
+            binding.fabSave.isClickable = false
             val note = Note(currentId,title,description,currentDate)
             db.collection("note")
                 .document(currentId)

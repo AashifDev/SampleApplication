@@ -67,7 +67,7 @@ class FirebaseDbFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.fabAddNote.setOnClickListener {
-           findNavController().navigate(R.id.action_firebaseDbFragment_to_addFragment)
+           findNavController().navigate(R.id.addFragment)
         }
     }
 
