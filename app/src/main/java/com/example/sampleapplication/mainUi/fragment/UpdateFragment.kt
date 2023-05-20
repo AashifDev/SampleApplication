@@ -1,5 +1,6 @@
 package com.example.sampleapplication.mainUi.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sampleapplication.R
@@ -52,7 +54,18 @@ class UpdateFragment : Fragment() {
             }
         }
 
+        clearBackStackOnBackPressed()
         return binding.root
+    }
+
+    private fun clearBackStackOnBackPressed() {
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                requireActivity().intent.flags =
+                    Intent.FLAG_ACTIVITY_CLEAR_TOP
+            }
+
+        })
     }
 
     private fun deleteFromDb() {
