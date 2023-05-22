@@ -25,6 +25,7 @@ class UpdateFragment : Fragment() {
     var currentId = ""
     var title = ""
     var description = ""
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

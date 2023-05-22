@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.sampleapplication.R
@@ -37,6 +38,19 @@ class FirebaseDbFragment : Fragment() {
         adapter = RecyclerViewAdapter(arrList,this)
         setAdapter()
         binding.recyclerView.adapter = adapter
+
+
+
+        val onBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                fragmentManager?.let {
+                    activity?.supportFragmentManager?.popBackStack(null,
+                        it.backStackEntryCount)
+                }
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, onBackPressedCallback)
+
         return binding.root
     }
 
@@ -70,6 +84,5 @@ class FirebaseDbFragment : Fragment() {
            findNavController().navigate(R.id.addFragment)
         }
     }
-
 
 }
