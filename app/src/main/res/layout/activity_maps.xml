@@ -4,13 +4,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainUi.fragment.MapsActivity" >
+    tools:context=".mainUi.fragment.MapsActivity">
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintStart_toStartOf="parent" />
+
+    <!--<androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/autoCompleteEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Search Address"
+        android:maxLines="1"
+        android:inputType="text"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/ic_location"
+        android:background="@drawable/bg_search_address"
+        android:theme="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/searchAddressResultRV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/layout_item_places"
+        map:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        map:layout_constraintEnd_toEndOf="@+id/autoCompleteEditText"
+        map:layout_constraintStart_toStartOf="@+id/autoCompleteEditText"
+        map:layout_constraintTop_toBottomOf="@+id/autoCompleteEditText" />-->
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/autoCompleteEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="start"
+        android:hint="Enter Location"
+        android:padding="10dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="16sp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_search_address"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

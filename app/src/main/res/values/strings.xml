@@ -33,7 +33,8 @@
     <string name="open" translatable="false">Open</string>
     <string name="close" translatable="false">Close</string>
     <string name="delete" translatable="false">Delete</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps" translatable="false">MapsActivity</string>
+    <string name="api_key" translatable="false">AIzaSyBSNyp6GQnnKlrMr7hD2HGiyF365tFlK5U</string>
 
 
 </resources>
